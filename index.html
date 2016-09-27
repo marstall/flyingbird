@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Sky</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8'">
+<link rel="stylesheet" type="text/css" href="style.css">
+<!-- include jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- place 4 images in a grid with fixed positions'-->
+
+<!-- now for the javascript -->
+</head>
+<body>
+<div id="sky">
+  <img id='1' style="position:fixed;left:700px;top:50px" src='cloud1.png'/>
+  <img id='2' style="position:fixed;left:300px;top:0px" src='cloud2.png'/>
+  <img id='3' style="position:fixed;left:300px;top:100px" src='cloud3.png'/>
+  <img id='4' style="position:fixed;left:700px;top:0px" src='cloud4.png'/>
+  <img id='5' style="position:fixed;left:0px;top:0px" src='cloud5.png'/>
+  
+</div>
+<div id="bird"></div>
+<div id="waves"></div>
+<div id="cloud"></div>
+<div id="rain"></div>
+</body>
+</html>
+<script>
+
+// setting up some functions to use
+function hide(id) {
+  $("#"+id).hide()
+}
+
+function fadeIn(id,duration) {
+  $("#"+id).fadeIn(duration)
+}
+
+function fadeOut(id,duration) {
+  $("#"+id).fadeOut(duration)
+}
+// now we get started here. first, hide all the images.
+hide('1');
+hide('2');
+hide('3');
+hide('4');
+hide('5');
+
+// now fade in image 1 after 2 seconds (2000 milliseconds)
+setTimeout(function() { 
+  fadeIn(1,1000)
+}, 2000);
+
+setTimeout(function() { 
+  fadeIn(2,1000)
+}, 4000);
+
+setTimeout(function() { 
+  fadeIn(3,1000)
+}, 6000);
+
+setTimeout(function() { 
+  fadeIn(4,1000)
+}, 8000);
+
+setTimeout(function() { 
+  fadeIn(5,1000)
+}, 10000);
+</script>

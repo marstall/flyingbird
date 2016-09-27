@@ -1,0 +1,51 @@
+<!-- include jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- place 4 images in a grid with fixed positions'-->
+<img id='1' style="position:fixed;left:0px;top:0px;width:472px" src='http://www.jeanniejeannie.com/wp-content/uploads/2013/06/helico.gif'/>
+<img id='2' style="position:fixed;left:500px;top:0px" src='http://www.jeanniejeannie.com/wp-content/uploads/2013/06/maisonhaute.gif'/>
+<img id='3' style="position:fixed;left:0px;top:400px" src='http://www.jeanniejeannie.com/wp-content/uploads/2013/06/caravane.gif'/>
+<img id='4' style="position:fixed;left:500px;top:400px" src='http://www.wired.com/wp-content/uploads/images_blogs/design/2013/09/tumblr_inline_mqutgxtW2Z1qz4rgp.gif'/>
+
+<!-- now for the javascript -->
+<script>
+
+// setting up some functions to use
+function hide(id) {
+  $("#"+id).hide()
+}
+
+function fadeIn(id,duration) {
+  $("#"+id).fadeIn(duration)
+}
+
+function fadeOut(id,duration) {
+  $("#"+id).fadeOut(duration)
+}
+
+// now we get started here. first, hide all the images.
+hide('1');
+hide('2');
+hide('3');
+hide('4');
+
+// now fade in image 1 after 2 seconds (2000 milliseconds)
+setTimeout(function() { 
+  fadeIn(1,1000)
+}, 2000);
+
+// fade image 1 back out at the 5 second mark
+setTimeout(function() { 
+  fadeOut(1,1000)
+}, 5000);
+
+// fade image 4 in at the 10 second mark
+setTimeout(function() { 
+  fadeIn(4,1000)
+}, 10000);
+
+// then fade it back in
+setTimeout(function() { 
+  fadeOut(4)
+}, 15000);
+</script>
