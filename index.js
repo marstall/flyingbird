@@ -2,18 +2,17 @@
 getGradientColor = function(start_color, end_color, percent) {
   var start = new ColorMix.Color(start_color)
   var end = new ColorMix.Color(end_color)
-  console.log("before percent:"+percent)
+//  console.log("before percent:"+percent)
   percent = percent*100
   first_percent = 100-percent
   second_percent = percent
-  console.log("percent/first/second percent:"+percent+"/"+first_percent+"/"+second_percent)
+//  console.log("percent/first/second percent:"+percent+"/"+first_percent+"/"+second_percent)
   return ColorMix.mix([start,end],[first_percent,second_percent])
  };
 
 
 function skyfade(fTime,percent_progress,argument)
 {
-  console.log("skyfade with time:"+fTime)  
   colortimes = sky_json["sky"]
   for (var i=colortimes.length-2;i>=0;--i) {
     colortime = colortimes[i]
@@ -23,10 +22,10 @@ function skyfade(fTime,percent_progress,argument)
     if (fTime>start_time) {
       start_color=colortime[1]
       end_color= next_colortime[1]
-      console.log("start_time/end_time/current_time:"+start_time+"/"+end_time+"/"+fTime)
+//      console.log("start_time/end_time/current_time:"+start_time+"/"+end_time+"/"+fTime)
       ratio = (fTime-start_time)/(end_time-start_time)
       color = getGradientColor(start_color,end_color,ratio)
-      console.log("origin/target/current color:"+start_color+"/"+end_color+"/"+color)
+      console.log("skyfade from "+start_color+" to"+end_color+", currently at"+color)
       $("#sky").css("background-color",color)
       break;
     }
@@ -36,19 +35,16 @@ function skyfade(fTime,percent_progress,argument)
 
 function animateCSS(fTime,percent_progress,argument)
 {
-  console.log("animateCSS fTime/percent_progress:"+fTime+"/"+percent_progress)  
-  console.log("animateCSS argument:"+argument)  
   argument = JSON.parse(argument)
   selectors = argument["selectors"]
   transition = argument["transition"]
-  console.log("transition:"+JSON.stringify(transition))
   property = transition[0]
   start_value = transition[1]
   end_value = transition[2]
   current_value = start_value + ((end_value-start_value)*percent_progress)
   for (i=0;i<selectors.length;++i) {
     selector = selectors[i]
-    console.log("animateCSS is animating "+selectors[selector]+"'s "+property+". Going from "+start_value+" to "+end_value+", currently at "+current_value)
+    console.log("animateCSS is animating "+selector+"'s "+property+". Going from "+start_value+" to "+end_value+", currently at "+current_value)
     $(selector).css(property,""+current_value)
   }
 }
@@ -64,7 +60,7 @@ function time_as_float()
 function tick()
 {
   fTime = time_as_float()
-  console.log("tick:"+ fTime)
+//  console.log("tick:"+ fTime)
   ranges = functions_json["functions"]
   for (var i=0;i<ranges.length;++i) {
     range = ranges[i]

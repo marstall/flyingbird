@@ -51,24 +51,24 @@ below it is configured to fade all the clouds in over a few minutes at 1:30PM, t
     }
   }
 
-
+check the console log for info about what it is doing
 )
 
 
 */
 functions_json = {"functions":[
   {"start":0,"end":24,    "function":"skyfade"},
-  {"start":13.75,"end":13.85, "function":"animateCSS",
+  {"start":13,"end":15, "function":"animateCSS",
     "argument":
     {
-      "selectors":["#1","#2","#3","#4","#5"],
+      "selectors":["#cloud1","#cloud2","#cloud3","#cloud4","#cloud5"],
       "transition":["opacity",0.5,1]
     }
   },
-  {"start":13.6,"end":13.7, "function":"animateCSS",
+  {"start":15,"end":17, "function":"animateCSS",
     "argument":
     {
-      "selectors":["#1","#2","#3","#4","#5"],
+      "selectors":["#cloud1","#cloud2","#cloud3","#cloud4","#cloud5"],
       "transition":["opacity",1,0]
     }
   }
@@ -82,11 +82,11 @@ functions_json = {"functions":[
 </head>
 <body>
 <div id="sky">
-  <img id='1' style="opacity:0;position:fixed;left:700px;top:50px" src='cloud1.png'/>
-  <img id='2' style="opacity:0;position:fixed;left:300px;top:0px" src='cloud2.png'/>
-  <img id='3' style="opacity:0;position:fixed;left:300px;top:100px" src='cloud3.png'/>
-  <img id='4' style="opacity:0;position:fixed;left:700px;top:0px" src='cloud4.png'/>
-  <img id='5' style="opacity:0;position:fixed;left:0px;top:0px" src='cloud5.png'/>
+  <img id='cloud1' style="opacity:0;position:fixed;left:700px;top:50px" src='cloud1.png'/>
+  <img id='cloud2' style="opacity:0;position:fixed;left:300px;top:0px" src='cloud2.png'/>
+  <img id='cloud3' style="opacity:0;position:fixed;left:300px;top:100px" src='cloud3.png'/>
+  <img id='cloud4' style="opacity:0;position:fixed;left:700px;top:0px" src='cloud4.png'/>
+  <img id='cloud5' style="opacity:0;position:fixed;left:0px;top:0px" src='cloud5.png'/>
   
 </div>
 <div id="bird"></div>
