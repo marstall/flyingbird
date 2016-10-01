@@ -17,6 +17,64 @@ sky_json = {"sky":[
   [21,"#000818"],
   [24,"#000818"]
 ]}
+
+/*
+add elements to functions_json to perform css transitions on elements based on time of day. An element looks like this
+
+  {"start":13.5,"end":13.6, "function":"animateCSS",
+    "argument":
+    {
+      "selectors":["#1","#2","#3","#4","#5"],
+      "transition":["opacity",0,1]
+    }
+  }
+
+You have to add a comma to the previous element to make it compile.
+
+start and end are the beginning and ending times for the transition.
+
+selectors is an array of the jQuery selectors you want to transition.
+
+the value of transitions is an array of three elements
+
+first element: the css property you want to change.
+
+second and third elements: the desired start and end date.
+
+below it is configured to fade all the clouds in over a few minutes at 1:30PM, then back out again, by changing the opacity from 0 to 1 slowly and then back down to 1. (you could use a different css property too, as long as it takes a single numeral as a value. like you could move the clouds across the screen by incrementing the 'left' property from -1000 to 1000 like this:
+
+  {"start":13.5,"end":13.6, "function":"animateCSS",
+    "argument":
+    {
+      "selectors":["#1","#2","#3","#4","#5"],
+      "transition":["left",-1000,1000]
+    }
+  }
+
+
+)
+
+
+*/
+functions_json = {"functions":[
+  {"start":0,"end":24,    "function":"skyfade"},
+  {"start":13.75,"end":13.85, "function":"animateCSS",
+    "argument":
+    {
+      "selectors":["#1","#2","#3","#4","#5"],
+      "transition":["opacity",0.5,1]
+    }
+  },
+  {"start":13.6,"end":13.7, "function":"animateCSS",
+    "argument":
+    {
+      "selectors":["#1","#2","#3","#4","#5"],
+      "transition":["opacity",1,0]
+    }
+  }
+]}
+
+
 </script>
 
 <script src="index.js"></script>
@@ -24,11 +82,11 @@ sky_json = {"sky":[
 </head>
 <body>
 <div id="sky">
-  <img id='1' style="position:fixed;left:700px;top:50px" src='cloud1.png'/>
-  <img id='2' style="position:fixed;left:300px;top:0px" src='cloud2.png'/>
-  <img id='3' style="position:fixed;left:300px;top:100px" src='cloud3.png'/>
-  <img id='4' style="position:fixed;left:700px;top:0px" src='cloud4.png'/>
-  <img id='5' style="position:fixed;left:0px;top:0px" src='cloud5.png'/>
+  <img id='1' style="opacity:0;position:fixed;left:700px;top:50px" src='cloud1.png'/>
+  <img id='2' style="opacity:0;position:fixed;left:300px;top:0px" src='cloud2.png'/>
+  <img id='3' style="opacity:0;position:fixed;left:300px;top:100px" src='cloud3.png'/>
+  <img id='4' style="opacity:0;position:fixed;left:700px;top:0px" src='cloud4.png'/>
+  <img id='5' style="opacity:0;position:fixed;left:0px;top:0px" src='cloud5.png'/>
   
 </div>
 <div id="bird"></div>
@@ -37,34 +95,4 @@ sky_json = {"sky":[
 <div id="rain"></div>
 </body>
 </html>
-
-<script>
-// now we get started here. first, hide all the images.
-hide('1');
-hide('2');
-hide('3');
-hide('4');
-hide('5');
-
-// now fade in image 1 after 2 seconds (2000 milliseconds)
-setTimeout(function() { 
-  fadeIn(1,1000)
-}, 2000);
-
-setTimeout(function() { 
-  fadeIn(2,1000)
-}, 4000);
-
-setTimeout(function() { 
-  fadeIn(3,1000)
-}, 6000);
-
-setTimeout(function() { 
-  fadeIn(4,1000)
-}, 8000);
-
-setTimeout(function() { 
-  fadeIn(5,1000)
-}, 10000);
-</script>
 
